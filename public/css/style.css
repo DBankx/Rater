@@ -1,0 +1,289 @@
+/* google font */
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Quicksand&display=swap');
+
+body{
+   width: 100vw;
+   font-family: 'Montserrat', sans-serif;
+   overflow-x: hidden;
+   margin: 0;
+   padding: 0;
+}
+
+html, body{
+    height: 100%;
+}
+
+/* navigation-bar & banner styling */
+
+#navigation {
+    box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.6);
+}
+
+.naviocn {
+    color: white;
+}
+
+.navbar{
+    width: 100%;
+}
+
+
+.dropdown-item{
+    text-align: center;
+    font-weight: 600;
+}
+
+.dropdown-item p{
+    color: lightgray;
+    font-size: 0.7rem;
+    font-weight: normal;
+}
+
+.dropdown-item button{
+    text-align: center;
+    margin-left: 45%;
+}
+
+.userName{
+    font-weight: 600;
+    font-size: 1rem;
+    color: black;
+}
+
+
+/* rate section */
+
+#rate{
+    margin-top: 3%;
+    text-align: center;
+}
+
+
+@media (min-width: 200px) and (max-width: 533px){
+
+    .modalBtn{
+        text-align: center;
+    }
+}
+
+/* rating */
+
+#rate .fas{
+    color: skyblue;
+}
+
+.modalBtn {
+    font-weight: 600;
+}
+
+.modalBtn:hover{
+    background: linear-gradient(313deg, rgba(240,158,6,1) 0%, rgba(255,109,109,1) 15%, rgba(237,184,48,1) 47%, rgba(52,116,217,1) 84%, rgba(74,221,110,1) 100%);
+}
+
+/* card styling */
+
+#movie{
+    overflow: auto;
+    margin-top: 3%;
+    padding-bottom: 100px;
+}
+
+
+.mainCard{
+    width: 18rem;
+    height: 23rem;
+    overflow: hidden;
+    position: relative;
+    border-radius: 5px;
+    box-shadow: 5px 5px 15px 2px rgba(0, 0, 0, 0.5);
+}
+
+.sec-card{
+    width: 18rem;
+    height: 26rem;
+}
+
+.sec-cardR{
+    width: 18rem;
+    height: 26rem;
+    margin-bottom: 5%;
+}
+
+
+@media (min-width: 768px) and (max-width: 995px){
+    
+.sec-cardR{
+    width: 20rem;
+    height: 26rem;
+    margin-bottom: 14%;
+}
+.px{
+    margin: 0 8% 4% 8% ;
+}
+}
+
+@media (min-width: 1652px) and (max-width: 1888px){
+  
+}
+
+.sec-card h3{
+    margin-top: 1.5%;
+    text-align: center;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1.25rem;
+}
+
+.main-content img{
+    width: 100%;
+    height: 100%;
+}
+
+.mainCard .overlay-content{
+    width: 100%;
+    height: 100%;
+    background-color: grey;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: absolute;
+    z-index: 2;
+    transition: 0.5s;
+    top: 0;
+    left: -100%;
+    opacity: 0;
+}
+
+.mainCard:hover .overlay-content{
+    /* 0 */
+    transform: translateX(100%);
+    opacity: 0.9;
+}
+
+.mainCard .main-content{
+    width: 100%;
+    height: 100%;
+}
+
+.mainCard .overlay-content p span {
+    display: block;
+    letter-spacing: normal;
+    font-size: 1rem;
+    font-style: italic;
+    margin-top: 1.25rem;
+}
+
+.content-main {
+    text-align: center;
+}
+.content-main img{
+    height: 20%;
+    width: 20%;
+}
+
+.content-main h5 {
+    font-style: italic;
+    font-size: 0.7rem;
+    color: white;
+}
+
+.content-main h3{
+    font-weight: 600;
+}
+
+/* footer styling */
+
+.allPage{
+    min-height: 100%;
+}
+
+#last{
+    background-color: #ededed;
+    
+}
+
+footer{
+    margin-top: 2%;
+    position: relative;
+    padding-top: 3%;
+    text-align: center;
+    margin-bottom: 0;
+    margin-top: -100px;
+    clear: both;
+}
+
+footer .linkIcons{
+    margin: 0 3%;
+    color: darkgrey;
+}
+
+footer .linkIcons:hover{
+    animation: fade 1.5s ease;
+    color: #035aa6;
+}
+
+@keyframes fade{
+    from{
+        color: darkgrey;
+    }
+    to{
+        color: #035aa6;
+    }
+}
+
+.links{
+    margin-top: 2%;
+    padding-bottom: 2%;
+}
+
+.links a{
+    margin: 0 2%;
+    text-transform: uppercase;
+    color: darkgrey;
+    font-size: 0.7rem;
+}
+
+
+footer p{
+    color: darkgrey;
+    margin-top: 2%;
+    font-size: 0.7rem;
+}
+
+/* contact form */
+
+.contact-form{
+    margin: 0 auto;
+    background-color: #ededed;
+    max-width: 80%;
+    width: 50%;
+}
+
+.contact-form h2, .contact-form p{
+    text-align: center;
+}
+
+@media (min-width: 200px) and (max-width: 533px){
+    .contact-form{
+        width: 80%;
+        margin: 10% auto;
+    }
+
+    .message h1{
+        font-size: 1.5rem;
+    }
+
+    .px{
+        margin: 0 6% 4% 6% ;
+    }
+}
+
+.contact-form form{
+    padding: 2%;
+}
+
+.message{
+    margin: 10% auto;
+    text-align: center;
+}

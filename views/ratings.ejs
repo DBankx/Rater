@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ratings  -  Rate a movie</title>
+    <link href="images/favicon.ico" rel="icon" type="image/x-icon" />
+    <!-- bootstrap/css -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- font awesome -->
+    <script src="https://use.fontawesome.com/e43f69cce6.js"></script>
+<script src="https://kit.fontawesome.com/9c66dcb850.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="allPage">
+    <!-- navigation-bar / banner section -->
+    <section id="navigation">
+        <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light">
+           
+              <a class="navbar-brand" href="#">
+                <img src="/images/logo.png" width="30" height="30" class="d-inline-block align-top" alt="Logo Image">  
+                Rater</a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+          
+              <div class="collapse navbar-collapse" id="navbarsExample07">
+                <ul class="navbar-nav ml-auto">
+                  <li class="nav-item active">
+                    <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/ratings">Ratings</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/contact">Contact</a>
+                  </li>
+
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle userName" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <%= user.email %> <i class="fas fa-user-check"></i>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="/logout">
+                          Logout <i class="fas fa-user-times"></i>
+                          <p>Logout of rater</p>
+                      </a>
+                    </div>
+                    </li>
+                </ul>
+              </div>
+          </nav>
+          
+    </section>
+
+    <!-- rate a movie -->
+    <section id="rate">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <button type="button" class="btn btn-primary modalBtn btn-lg" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">Rate a Movie</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Rate a Movie</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form action="/ratings" method="POST">
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">Movie Name</label>
+                  <input type="text" class="form-control" name="movieName" id="recipient-name" placeholder="Skyfall">
+                </div>
+                <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">Movie Image Url</label>
+                    <input type="text" class="form-control" name="imageUrl" id="recipient-name" placeholder="https://skyfall.googleImage.com">
+                  </div>
+                  <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">Rating</label>
+                    <input type="number" class="form-control" name="rating" id="recipient-name" placeholder="0 - 10">
+                  </div>
+                <div class="form-group">
+                  <label for="message-text" class="col-form-label">Comment:</label>
+                  <textarea class="form-control" id="message-text" name="comment" row="4"></textarea>
+                </div>
+            
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-info">Publish Rating</button>
+            </div>
+        </form>
+          </div>
+        </div>
+      </div>
+
+      <!--published movies section -->
+      <section id="movie">
+          <div class="container px">
+              <div class="row">
+                  <% for(let i = 0; i < user.ratings.length; i++){ %>
+                    <form action="/delete" method="POST">
+                    <div class="col-xl-3 col-lg-4 col-md-6">
+                        <div class="sec-card">
+                          <input class=".closeButton" type="checkbox" name="check" value="<%=user.ratings[i]._id%>" onChange="this.form.submit()">
+                            <div class="mainCard">
+                                <div class="main-content">
+                                    <img src="<%= user.ratings[i].url%>" alt="">
+                                </div>
+                                <div class="overlay-content">
+                                    <div class="content-main">
+                                        <% if(user.ratings[i].rating <= 4){%>
+                                            <img class="star" src="/images/starLow.png" alt=""> 
+                                      <% } else if(user.ratings[i].rating > 4 && user.ratings[i].rating <= 7){ %>
+                                        <img class="star" src="/images/starMed.png" alt=""> 
+                                       <% }else{ %>
+                                        <img class="star" src="/images/starHigh.png" alt=""> 
+                                      <% } %>
+                                      <h3><%= user.ratings[i].rating %>/10</h3>
+                                      <p><%=user.ratings[i].comment%> <span>- <%=user.email%> -</span></p> 
+                                    </div>
+                                </div>
+                            </div>
+                            <h3><%= user.ratings[i].name%> </h3>
+                        </div>
+                    </div>
+                  </form>
+                <% } %> 
+              </div>
+          </div>
+      </section>
+    </div>
+
+        <!--bootstrap javascript-->
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    </body>
+    <section id="last">
+      <footer>
+          <a class="linkIcons" href="https://www.instagram.com/dbankx1/?hl=en"><i class="fab fa-instagram fa-2x"></i></a>
+          <a class="linkIcons" href="https://twitter.com/DBankx1"><i class="fab fa-twitter fa-2x"></i></a>
+          <a class="linkIcons" href="https://www.facebook.com/damilola.hundeyin"><i class="fab fa-facebook-square fa-2x"></i></a>
+          <div class="links">
+              <a href="/contact">Contact Me</a>
+              <a href="/register">Register</a>
+              <a href="/login">Login</a>
+              <a href="https://github.com/DBankx/Rater">Github</a>  
+              <p>&copy; Copyright 2020 rater website by Hundeyin Oluwadamilola</p>          
+          </div>
+  
+      </footer>
+  </section>
+</html>

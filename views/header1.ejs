@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RATER  -  rate your movies</title>
+    <link href="images/favicon.ico" rel="icon" type="image/x-icon" />
+    <!-- bootstrap/css -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- font awesome -->
+    <script src="https://use.fontawesome.com/e43f69cce6.js"></script>
+<script src="https://kit.fontawesome.com/9c66dcb850.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- navigation-bar / banner section -->
+    <section id="navigation">
+        <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light">
+           
+              <a class="navbar-brand" href="#">
+                <img src="/images/logo.png" width="30" height="30" class="d-inline-block align-top" alt="Logo Image">  
+                Rater</a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+          
+              <div class="collapse navbar-collapse" id="navbarsExample07">
+                <ul class="navbar-nav ml-auto">
+                  <li class="nav-item active">
+                    <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/ratings">Ratings</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/contact">Contact</a>
+                  </li>
+                <% if (authenticated) {%>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle userName" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <%= req.user.email %> <i class="fas fa-user-check"></i>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="/logout">
+                          Logout <i class="fas fa-user-times"></i>
+                          <p>Logout of rater</p>
+                      </a>
+                    </div>
+                    </li>
+                <%} else {%>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Login/Register <i class="fas navicon fa-users fa-1x"></i>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="/login">
+                          Login <i class="fas fa-user-check"></i>
+                          <p>Login to rate your favorite movies</p>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="/register">
+                        Register <i class="fas fa-user-plus"></i>
+                        <p>Register to rate your favorite movies</p>
+                      </a>
+                    </div>
+                  </li>
+               <% }%>
+                </ul>
+              </div>
+          </nav>
+          
+    </section>

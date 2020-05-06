@@ -1,0 +1,63 @@
+<%- include('header1') %> 
+
+
+<!-- rate button -->
+<div class="allPage">
+<section id="rate">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <h2>Login/Signup to rate your movies</h2>
+            </div>
+            <div class="col-lg-6">
+                <form class="form-inline my-2 my-lg-0" action="/" method="POST">
+                    <input class="form-control mr-sm-2" name="search" type="search" placeholder="Search for movies" aria-label="Search" autocomplete="off">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                  </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- movie section test -->
+<section id="movie">
+    <div class="container-fluid px">
+        <div class="row">
+            <% for(let key in usersrating){ %>
+                <% let value = usersrating[key].ratings %> 
+                <% for(let key2 in value){%>
+                <div class="col-xl-3 col-lg-4 col-md-6">
+                    <div class="sec-card">
+                        <div class="mainCard">
+                            <div class="main-content">
+                            
+                                <img src="<%=value[key2].url%>" alt="">
+                            </div>
+                            <div class="overlay-content">
+                                <div class="content-main">
+                                    <% if(value[key2].rating <= 4){%>
+                                        <img class="star" src="/images/starLow.png" alt=""> 
+                                  <% } else if(value[key2].rating > 4 && value[key2].rating <= 7){ %>
+                                    <img class="star" src="/images/starMed.png" alt=""> 
+                                   <% }else{ %>
+                                    <img class="star" src="/images/starHigh.png" alt=""> 
+                                  <% } %>
+                                  <h3><%= value[key2].rating %>/10 </h3>
+                                  <p><%= value[key2].comment %> <span>- <%= usersrating[key].email %> -</span> </p>
+                                </div>
+                                </div>    
+                            </div>
+                            <h3><%= value[key2].name %> </h3>
+                        </div>
+                    </div>
+                    <% }  %>
+                    <% } %> 
+                </div>
+        </div>
+</section>
+</div>
+
+
+<%- include('footer1') %> 
+
+
