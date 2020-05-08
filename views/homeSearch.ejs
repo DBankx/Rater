@@ -21,13 +21,12 @@
 
 <!-- movie section test -->
 <section id="movie">
-<div class="container-fluid px">
-    <div class="row">
+<div class="wrapper">
         <% for(let key in users){%>
             <% let value = users[key].ratings%>
             <% for(let key2 in value){ %> 
                 <% if (value[key2].name == searchedName){ %>
-                    <div class="col-xl-3 col-lg-4 col-md-6">
+                    <div class="Above">
                         <div class="sec-card">
                             <div class="mainCard">
                                 <div class="main-content">

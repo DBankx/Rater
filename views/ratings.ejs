@@ -108,11 +108,10 @@
 
       <!--published movies section -->
       <section id="movie">
-          <div class="container px">
-              <div class="row">
+          <div class="wrapper">
                   <% for(let i = 0; i < user.ratings.length; i++){ %>
                     <form action="/delete" method="POST">
-                    <div class="col-xl-3 col-lg-4 col-md-6">
+                    <div class="Above">
                         <div class="sec-card">
                           <input class=".closeButton" type="checkbox" name="check" value="<%=user.ratings[i]._id%>" onChange="this.form.submit()">
                             <div class="mainCard">

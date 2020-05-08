@@ -90,7 +90,7 @@ html, body{
 
 
 .mainCard{
-    width: 18rem;
+    /* width: 18rem; */
     height: 23rem;
     overflow: hidden;
     position: relative;
@@ -99,15 +99,10 @@ html, body{
 }
 
 .sec-card{
-    width: 18rem;
+    /* width: 18rem; */
     height: 26rem;
 }
 
-.sec-cardR{
-    width: 18rem;
-    height: 26rem;
-    margin-bottom: 5%;
-}
 
 
 @media (min-width: 768px) and (max-width: 995px){
@@ -286,4 +281,31 @@ footer p{
 .message{
     margin: 10% auto;
     text-align: center;
+}
+
+/* grid for home */
+
+.wrapper{
+    padding: 0 3em;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 1em;
+}
+
+@media (max-width: 1200px){
+    .wrapper{
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media(max-width: 900px){
+    .wrapper{
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media(max-width: 530px){
+    .wrapper{
+        grid-template-columns: 1fr;
+    }
 }
